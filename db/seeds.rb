@@ -30,7 +30,15 @@ b2 = Bookmark.create(user: b, petty_fact:p2)
 b3 = Bookmark.create(user: c, petty_fact:p3)
 b4 = Bookmark.create(user: d, petty_fact:p4)
 b5 = Bookmark.create(user: e, petty_fact:p5)
-b6 = Bookmark.create(user: b, petty_fact:p1)
+b6 = Bookmark.create(user: a, petty_fact:p3)
+b7 = Bookmark.create(user: b, petty_fact:p4)
+b8 = Bookmark.create(user: c, petty_fact:p5)
+b9 = Bookmark.create(user: d, petty_fact:p1)
+b10 = Bookmark.create(user: e, petty_fact:p2)
+b11 = Bookmark.create(user: a, petty_fact:p4)
+b12 = Bookmark.create(user: b, petty_fact:p5)
+
+
 
 
 
