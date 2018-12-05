@@ -1,15 +1,14 @@
 require_relative '../config/environment'
-require_relative '../lib/api_communicator.rb'
+
+cli = CLI.new
+
+cli.welcome
+# cli.get_num_and_show_fact
+number = cli.get_number_from_user
+fact = cli.web_request(number)
 
 
-welcome
-number = get_number_from_user
-puts "You entered #{number}"
-binding.pry 
-
-petty_fact = web_request(number)
-
-puts petty_fact
+puts fact
 
 
 
