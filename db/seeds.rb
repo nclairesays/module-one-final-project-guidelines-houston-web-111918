@@ -6,11 +6,11 @@ require_relative '../config/environment.rb'
 # end
 
 
-a = User.create(name: "Andy", age: 10, gender: "female")
-b = User.create(name: "Brittany", age: 20, gender: "male")
-c = User.create(name: "Cassy", age: 25, gender: "male")
-d = User.create(name: "Daisy", age: 30, gender: "male")
-e = User.create(name: "Eddy", age: 35, gender: "female")
+a = User.create(username: "Andy", age: 10, gender: "female")
+b = User.create(username: "Brittany", age: 20, gender: "male")
+c = User.create(username: "Cassy", age: 25, gender: "male")
+d = User.create(username: "Daisy", age: 30, gender: "male")
+e = User.create(username: "Eddy", age: 35, gender: "female")
 
 one = Number.create(int_num: 1, alpha_num: "one")
 two = Number.create(int_num: 2, alpha_num: "two")
