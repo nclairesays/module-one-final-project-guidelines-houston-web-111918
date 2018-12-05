@@ -23,6 +23,11 @@ p2 = PettyFact.create(number: two, petty_fact:"Test 2")
 p3 = PettyFact.create(number: three, petty_fact:"Test 3")
 p4 = PettyFact.create(number: four, petty_fact:"Test 4")
 p5 = PettyFact.create(number: five, petty_fact:"Test 5")
+p6 = PettyFact.create(number: one, petty_fact: "Fact 6 about Num 1")
+p7 = PettyFact.create(number: one, petty_fact: "Fact 7 about Num 1")
+p8 = PettyFact.create(number: two, petty_fact: "Fact 8 about Num 2")
+p9 = PettyFact.create(number: two, petty_fact: "Fact 9 about Num 2")
+
 
 
 b1 = Bookmark.create(user: a, petty_fact:p1)
