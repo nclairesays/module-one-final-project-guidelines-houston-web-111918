@@ -1,4 +1,6 @@
 require_relative '../config/environment'
+        
+system("clear")       
 
 Welcome.new.welcome_menu
 

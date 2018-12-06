@@ -7,6 +7,7 @@ class Welcome
 
     def welcome_options_input
         input = gets.chomp.downcase 
+        system("clear")
         if input == "yes"
             Login.new.login_menu
         elsif input == "no"
