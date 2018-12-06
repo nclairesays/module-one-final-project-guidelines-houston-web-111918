@@ -12,11 +12,7 @@ c = User.create(username: "Cassy", age: 25, gender: "male")
 d = User.create(username: "Daisy", age: 30, gender: "male")
 e = User.create(username: "Eddy", age: 35, gender: "female")
 
-one = Number.create(int_num: 1, alpha_num: "one")
-two = Number.create(int_num: 2, alpha_num: "two")
-three = Number.create(int_num: 3, alpha_num: "three")
-four = Number.create(int_num: 4, alpha_num: "four")
-five = Number.create(int_num: 5, alpha_num: "five")
+
 
 p1 = PettyFact.create(number: one, petty_fact:"Test 1")
 p2 = PettyFact.create(number: two, petty_fact:"Test 2")
@@ -42,6 +38,21 @@ b9 = Bookmark.create(user: d, petty_fact:p1)
 b10 = Bookmark.create(user: e, petty_fact:p2)
 b11 = Bookmark.create(user: a, petty_fact:p4)
 b12 = Bookmark.create(user: b, petty_fact:p5)
+
+
+i = 1
+while i < 100
+    Number.create(int_num: i)
+    i += 1
+end
+
+
+# one = Number.create(int_num: 1, alpha_num: "one")
+# two = Number.create(int_num: 2, alpha_num: "two")
+# three = Number.create(int_num: 3, alpha_num: "three")
+# four = Number.create(int_num: 4, alpha_num: "four")
+# five = Number.create(int_num: 5, alpha_num: "five")
+
 
 
 

@@ -1,8 +1,12 @@
 require_relative '../config/environment'
 
-cli = CLI.new
+Welcome.new.welcome_menu
 
-cli.welcome_menu
+
+
+# cli = CLI.new
+
+# cli.welcome_menu
 
 # cli.get_num_and_show_fact
 
