@@ -212,9 +212,10 @@ class Login
     end
 
 
-    # def most_popular_facts
-    #     PettyFact.group(:user_id).order('petty_fact_id DESC').limit(5).count(:id)
-    #     binding.pry
+    #  def top_number 
+    #      PettyFact.max(:petty_fact).order('petty_fact_id DESC').limit(5).count(:id)
+    #      binding.pry
+    #  end
     # end
 
     # def top_facts_of_the_week
@@ -222,7 +223,7 @@ class Login
     #     book.order("date_truc('week', published_at)")
     #     end
     # end
-
+end
 
     
 
@@ -236,4 +237,3 @@ class Login
 
         
 
-end
