@@ -5,6 +5,7 @@ class Login
         puts "Great! Choose an option:\n\n"
         puts "1. Create an Account"
         puts "2. Log in to an Existing Account\n\n"
+        #puts "At any time, enter 'Exit' if you want to leave the program"
         login_options_input
     end
 
@@ -93,6 +94,7 @@ class Login
         puts "Would you like to:\n\n1. View a NEW petty fact?"
         puts "2. View your bookmarks?"
         puts "3. Exit program\n\n"
+        #puts "4. View top 5 PETTY FACTS voted on by your petty peers\n\n"
         input = gets.chomp.downcase
         if input == "1" || input == "1."
             system ("clear")
@@ -110,6 +112,9 @@ class Login
             puts "Thank you! Come again!\n\n"
             puts "************************\n\n"
             exit
+        #elsif
+            #input == "4" || input == "4."
+            #most_popular_facts
         else
             puts "Yo... Read the instructions!"
             trivia_or_bookmarks?
@@ -149,12 +154,35 @@ class Login
 
 
     def view_all_bookmarks
+        validate_existing_user
         all_bookmarks = Bookmark.all.find_by(user: $account_instance)
         facts = all_bookmarks.user.petty_facts
         list_of_facts = facts.map do |fact|
             "\u2022 #{fact.petty_fact}"
         end
         puts list_of_facts
+    end
+
+    def validate_existing_user
+        created_user = $account_instance
+        is_unique = TRUE
+
+        User.all.each do |user|
+            if created_user == user.username
+                is_unique = FALSE
+            end
+        end
+    
+        if is_unique == TRUE
+            created_user = User.create(username: created_user) #if it is a unique name, then set  the variable to the instance of that name
+            created_user.update(age: age_input, gender: gender_input)
+        else is_unique == FALSE
+            puts "\n"
+            puts "************************\n\n"
+            puts "This username already exists!"
+            puts "Create a unique username or log in to your existing account.\n\n"
+            login_menu
+        end
     end
 
     def other_options
@@ -177,9 +205,35 @@ class Login
             puts "************************\n\n"
             puts "That wasn't an option!\n\n"
             puts "Would you like to..."
-            puts "1. See the another fact about that same number?(doesn't work yet)"
+            puts "1. See another fact about that same number?(doesn't work yet)"
             puts "2. Enter a new number?"
             other_options_input
         end
     end
+
+
+    # def most_popular_facts
+    #     PettyFact.group(:user_id).order('petty_fact_id DESC').limit(5).count(:id)
+    #     binding.pry
+    # end
+
+    # def top_facts_of_the_week
+    #     Bookmark.all.each do |book|
+    #     book.order("date_truc('week', published_at)")
+    #     end
+    # end
+
+
+    
+
+
+
+
+         
+
+
+
+
+        
+
 end
