@@ -2,7 +2,7 @@ class Welcome
     
     def welcome_menu
         header = Artii::Base.new :font => 'slant'
-        puts header.asciify("PETTY FACTS")
+        puts header.asciify("PETTY FACTS").green
         puts "\nWelcome to the PETTY FACTS CLI APPLICATION!\n\n"
         puts "Prepare yourself for some MIND BLOWING PETTINESS!\n\n"
         puts "Are you ready to learn some petty facts about numbers? (proceed with caution...)\n\n"
@@ -20,7 +20,7 @@ class Welcome
             puts "\n************************\n\n"
             exit
         else 
-            puts "...it's a yes or no question..."
+            puts "To learn or not to learn...that is a YES or NO question..."
             welcome_options_input
         end
     end

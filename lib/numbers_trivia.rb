@@ -29,8 +29,19 @@ class NumbersTrivia
     def get_number_from_user
         puts "************************\n\n"
         puts "What number would you like to learn about? Enter an integer.\n\n"
-        gets.chomp
-        #need code for if user doesn't not enter a number FIX THIS
+        input = gets.chomp
+        if input.is_a? Integer
+            input
+        elsif input.downcase == "exit" || input.downcase == "exit!"
+            system('clear')
+            puts "************************\n\n"
+            puts "BYE, FELICIA!"
+            puts "\n************************\n"
+            exit 
+        else
+            puts "'#{input}' is not a number!\n\n"
+            get_number_from_user
+        end
     end
     
     def web_request(number)
