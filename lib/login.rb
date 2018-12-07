@@ -22,7 +22,9 @@ class Login
             start_trivia
         elsif input == "exit" || input == "exit!"
             system("clear")
+            puts "************************\n\n"
             puts "'Exit' wasn't listed as option, but fine...BYE!"
+            puts "\n\n************************"
             exit
         else
             puts "Yo... Enter number 1 or 2..."
@@ -78,7 +80,15 @@ class Login
         puts "************************\n\n"
         puts "Enter your login information:\n\n"
         input = gets.chomp.capitalize
-        User.all.find_by(username: input)
+        if User.all.find_by(username: input) == nil
+            puts "You lie! You do not have an account yet!\n\n"
+            puts "************************\n\n"
+            puts "1. Create an Account"
+            puts "2. Log in to an Existing Account\n\n"
+            login_options_input
+        else
+            User.all.find_by(username: input)
+        end  
     end
 
     def start_trivia
@@ -102,7 +112,6 @@ class Login
         elsif input == "2" || input == "2."
             system ("clear")
             puts "************************\n\n"
-            puts "Apparently, you think these PETTY facts are interesting enough to save: \n\n"
             view_all_bookmarks
             puts ""
             trivia_or_bookmarks?
@@ -154,36 +163,21 @@ class Login
 
 
     def view_all_bookmarks
-        validate_existing_user
-        all_bookmarks = Bookmark.all.find_by(user: $account_instance)
-        facts = all_bookmarks.user.petty_facts
-        list_of_facts = facts.map do |fact|
-            "\u2022 #{fact.petty_fact}"
-        end
-        puts list_of_facts
-    end
-
-    def validate_existing_user
-        created_user = $account_instance
-        is_unique = TRUE
-
-        User.all.each do |user|
-            if created_user == user.username
-                is_unique = FALSE
+        if Bookmark.all.find_by(user: $account_instance) == nil
+            puts "You don't have any bookmarks."
+            puts "It's probably a better idea if you choose number 1.\n\n"
+            trivia_or_bookmarks?
+        else
+            all_bookmarks = Bookmark.all.find_by(user: $account_instance)
+            facts = all_bookmarks.user.petty_facts
+            list_of_facts = facts.map do |fact|
+                "\u2022 #{fact.petty_fact}"
             end
-        end
-    
-        if is_unique == TRUE
-            created_user = User.create(username: created_user) #if it is a unique name, then set  the variable to the instance of that name
-            created_user.update(age: age_input, gender: gender_input)
-        else is_unique == FALSE
-            puts "\n"
-            puts "************************\n\n"
-            puts "This username already exists!"
-            puts "Create a unique username or log in to your existing account.\n\n"
-            login_menu
+            puts "Apparently, you think these PETTY facts are interesting enough to save: \n\n"
+            puts list_of_facts
         end
     end
+
 
     def other_options
         system("clear")
@@ -212,28 +206,15 @@ class Login
     end
 
 
-    #  def top_number 
-    #      PettyFact.max(:petty_fact).order('petty_fact_id DESC').limit(5).count(:id)
-    #      binding.pry
-    #  end
+    # def most_popular_facts
+    #     PettyFact.group(:user_id).order('petty_fact_id DESC').limit(5).count(:id)
+    #     binding.pry
     # end
 
     # def top_facts_of_the_week
     #     Bookmark.all.each do |book|
     #     book.order("date_truc('week', published_at)")
     #     end
-    # end
+    # end   
+
 end
-
-    
-
-
-
-
-         
-
-
-
-
-        
-
