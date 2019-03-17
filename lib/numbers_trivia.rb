@@ -1,12 +1,18 @@
 class NumbersTrivia
     def gets_num_and_show_fact
         @number = get_number_from_user
+        
+        #michael's code. 
+        if @number == nil
+            puts "You did not enter a number!"
+            gets_num_and_show_fact
+        end
+        
+        
         @fact = web_request(@number)
-        fact = @fact 
         system("clear")
-        puts "************************\n\n#{fact}\n\n************************\n\n\n"
-        #need to create conditional method. if can't find number in data base, then create a new num instance FIX THIS
-        find_or_create_number_instance
+        puts "************************\n\n#{@fact}\n\n************************\n\n\n"
+        $num_instance = find_or_create_number_instance
         $fact_instance = find_or_create_fact_instance
     end
 
@@ -30,8 +36,9 @@ class NumbersTrivia
         puts "************************\n\n"
         puts "What number would you like to learn about? Enter an integer.\n\n"
         input = gets.chomp
-        if input.is_a? Integer
-            input
+
+        if input != "0" && input.to_i == 0
+            return nil
         elsif input.downcase == "exit" || input.downcase == "exit!"
             system('clear')
             puts "************************\n\n"
@@ -39,8 +46,7 @@ class NumbersTrivia
             puts "\n************************\n"
             exit 
         else
-            puts "'#{input}' is not a number!\n\n"
-            get_number_from_user
+            return input
         end
     end
     
